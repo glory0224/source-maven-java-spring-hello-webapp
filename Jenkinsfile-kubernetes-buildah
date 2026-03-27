@@ -33,7 +33,7 @@ pipeline {
     stage('Checkout') {
       steps {
         container('maven') {
-          git branch: 'main', url: 'https://github.com/c1t1d0s7/webapp-buildah'
+          git branch: 'main', url: 'https://github.com/glory0224/source-maven-java-spring-hello-webapp.git'
         }
       }
     }
@@ -49,9 +49,9 @@ pipeline {
         container('buildah') {
           script {
             sh '''
-              buildah bud -f Dockerfile -t docker.io/c1t1d0s7/webtest:$BUILD_NUMBER -t docker.io/c1t1d0s7/webtest:latest .
-              buildah push docker.io/c1t1d0s7/webtest:$BUILD_NUMBER
-              buildah push docker.io/c1t1d0s7/webtest:latest
+              buildah bud -f Dockerfile -t docker.io/yg0224docker/webtest:$BUILD_NUMBER -t docker.io/yg0224docker/webtest:latest .
+              buildah push docker.io/yg0224docker/webtest:$BUILD_NUMBER
+              buildah push docker.io/yg0224docker/webtest:latest
             '''
           }
         }
